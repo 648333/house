@@ -1,0 +1,144 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --app-bg: radial-gradient(circle at 12% 15%, #fff0dc 0%, #f8e6cf 25%, #f4ddc1 50%, #edd2b2 100%);
+  --app-surface: rgba(255, 250, 242, 0.78);
+  --app-surface-strong: rgba(255, 248, 238, 0.95);
+  --app-text: #3f2e23;
+  --app-muted: #8b6f5a;
+  --app-line: rgba(168, 122, 84, 0.2);
+  --app-primary: #b46a3a;
+  --app-primary-deep: #8f4f29;
+  --app-accent: #d6a25f;
+  --app-shadow: 0 22px 56px rgba(113, 73, 42, 0.14);
+  --app-shadow-soft: 0 10px 28px rgba(125, 81, 47, 0.1);
+  --app-radius-lg: 30px;
+  --app-radius-md: 20px;
+  --el-color-primary: #b46a3a;
+  --el-color-primary-light-3: #c98a56;
+  --el-color-primary-light-5: #dba574;
+  --el-color-primary-light-7: #ebc596;
+  --el-color-primary-light-9: #f8e8d2;
+  --el-border-radius-base: 14px;
+  --el-bg-color-page: transparent;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--app-text);
+  font-family: 'Outfit', 'HarmonyOS Sans SC', 'PingFang SC', 'Noto Sans SC', sans-serif;
+  background: var(--app-bg);
+  background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.el-card,
+.el-dialog,
+.el-message-box,
+.el-dropdown-menu,
+.el-menu--popup,
+.el-popover.el-popper {
+  border: 1px solid var(--app-line) !important;
+  box-shadow: var(--app-shadow-soft) !important;
+  background: var(--app-surface) !important;
+  color: var(--app-text) !important;
+}
+
+.el-dialog,
+.el-card,
+.el-message-box {
+  backdrop-filter: blur(14px);
+}
+
+.el-button {
+  border-radius: 999px !important;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.el-button--primary {
+  border: none !important;
+  background: linear-gradient(135deg, var(--app-primary), var(--app-accent)) !important;
+  box-shadow: 0 10px 20px rgba(175, 108, 58, 0.28);
+}
+
+.el-button.is-plain {
+  background: rgba(201, 152, 103, 0.12) !important;
+  border-color: rgba(178, 123, 78, 0.28) !important;
+  color: #7a573d !important;
+}
+
+.el-input__wrapper,
+.el-textarea__inner,
+.el-select__wrapper,
+.el-date-editor.el-input__wrapper {
+  border-radius: 14px !important;
+  box-shadow: 0 0 0 1px rgba(177, 131, 91, 0.24) inset !important;
+  background: rgba(255, 249, 240, 0.9) !important;
+}
+
+.el-input__inner,
+.el-textarea__inner,
+.el-select__selected-item,
+.el-date-editor .el-range-input {
+  color: var(--app-text) !important;
+}
+
+.el-input__wrapper.is-focus,
+.el-select__wrapper.is-focused,
+.el-textarea__inner:focus {
+  box-shadow: 0 0 0 1px rgba(180, 106, 58, 0.5) inset, 0 0 0 4px rgba(180, 106, 58, 0.15) !important;
+}
+
+.el-tabs__item,
+.el-breadcrumb__item,
+.el-tag,
+.el-radio-button__inner,
+.el-form-item__label,
+.el-descriptions__label,
+.el-descriptions__content,
+.el-dialog__title,
+.el-message-box__title,
+.el-table th,
+.el-table td,
+.el-pager li,
+.el-empty__description,
+.el-empty__description p {
+  color: var(--app-text) !important;
+}
+
+.el-table,
+.el-table tr,
+.el-table th,
+.el-table td,
+.el-table__expanded-cell {
+  background: rgba(255, 249, 239, 0.84) !important;
+}
+
+.el-table {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.el-tag {
+  border-color: rgba(182, 131, 90, 0.28) !important;
+}
+
+.el-empty,
+.el-skeleton {
+  border-radius: var(--app-radius-md);
+}

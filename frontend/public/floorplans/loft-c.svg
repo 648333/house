@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+  <rect width="1600" height="1100" fill="#222a33"/>
+  <g stroke="#39424d" stroke-width="2">
+    <path d="M0 120 H1600M0 240 H1600M0 360 H1600M0 480 H1600M0 600 H1600M0 720 H1600M0 840 H1600M0 960 H1600"/>
+    <path d="M120 0 V1100M240 0 V1100M360 0 V1100M480 0 V1100M600 0 V1100M720 0 V1100M840 0 V1100M960 0 V1100M1080 0 V1100M1200 0 V1100M1320 0 V1100M1440 0 V1100"/>
+  </g>
+
+  <g stroke="#f3f5f7" stroke-width="14" fill="none" stroke-linecap="square">
+    <path d="M150 110 H920 V500 H600 V970 H150 Z"/>
+    <path d="M980 110 H1450 V970 H980"/>
+    <path d="M920 500 H980"/>
+    <path d="M920 680 H980"/>
+    <path d="M600 500 V970"/>
+  </g>
+
+  <g stroke="#f3f5f7" stroke-width="4" fill="none">
+    <path d="M920 280 A86 86 0 0 1 1006 366"/>
+    <path d="M920 680 A86 86 0 0 1 1006 766"/>
+    <path d="M600 620 A86 86 0 0 0 686 534"/>
+  </g>
+
+  <g fill="none" stroke="#f3f5f7" stroke-width="6">
+    <rect x="300" y="360" width="220" height="95"/>
+    <rect x="540" y="348" width="90" height="120"/>
+    <rect x="650" y="555" width="180" height="90"/>
+    <rect x="650" y="760" width="150" height="80"/>
+    <rect x="1085" y="190" width="210" height="250"/>
+    <rect x="1085" y="660" width="250" height="100"/>
+    <rect x="1360" y="640" width="55" height="210"/>
+  </g>
+
+  <g stroke="#f3f5f7" stroke-width="4" fill="none">
+    <path d="M1085 190 L1190 295 L1295 190"/>
+    <path d="M1295 440 L1190 335 L1085 440"/>
+  </g>
+
+  <g fill="#f3f5f7" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif" text-anchor="middle">
+    <text x="470" y="430" font-size="54">挑空客厅</text>
+    <text x="740" y="620" font-size="38">厨房</text>
+    <text x="725" y="810" font-size="38">卫浴</text>
+    <text x="1190" y="350" font-size="48">卧室</text>
+    <text x="1220" y="760" font-size="42">工作区</text>
+  </g>
+
+  <g fill="#c7cdd4" font-size="26" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+    <text x="956" y="528" transform="rotate(-90 956 528)">Y0821</text>
+    <text x="624" y="720" transform="rotate(-90 624 720)">Y0621</text>
+    <text x="300" y="1010">LTM3030</text>
+    <text x="1085" y="1010">LTM2424</text>
+  </g>
+</svg>

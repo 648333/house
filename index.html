@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>倒计时</title>
+  <style>
+    :root { color-scheme: light dark }
+    html, body { height: 100% }
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, PingFang SC, Microsoft YaHei, sans-serif;
+      background: #f7f7f7;
+      color: #222;
+    }
+    .card {
+      width: min(640px, 92vw);
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+      background: #fff;
+    }
+    .display {
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+      font-size: clamp(36px, 8vw, 72px);
+      letter-spacing: 2px;
+      text-align: center;
+      margin: 12px 0 4px;
+    }
+    .sub {
+      text-align: center;
+      opacity: .7;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0 20px;
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    input[type="number"] {
+      width: 100%;
+      font-size: 16px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,.15);
+      background: #fff;
+      color: #222;
+      outline: none;
+    }
+    input:disabled { opacity: .6 }
+    button {
+      padding: 10px 12px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,.15);
+      background: #f0f0f0;
+      color: #222;
+      cursor: pointer;
+    }
+    button:disabled { opacity: .6; cursor: not-allowed }
+    .done {
+      text-align: center;
+      margin-top: 12px;
+      font-weight: 600;
+      color: #d33;
+      visibility: hidden;
+    }
+    .blink { animation: blink 1s steps(2, start) 3 }
+    @keyframes blink { to { visibility: hidden } }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="display" id="display">00:00:00</div>
+    <div class="sub" id="hint">输入秒数，点击开始</div>
+
+    <div class="row">
+      <div>
+        <label for="seconds">秒数</label>
+        <input id="seconds" type="number" min="1" step="1" value="60" />
+      </div>
+      <div>
+        <label for="preset">预设</label>
+        <select id="preset">
+          <option value="60">1 分钟</option>
+          <option value="300">5 分钟</option>
+          <option value="600">10 分钟</option>
+          <option value="1800">30 分钟</option>
+          <option value="3600">1 小时</option>
+          <option value="7200">2 小时</option>
+          <option value="14400">4 小时</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="start">开始</button>
+      <button id="pause" disabled>暂停</button>
+      <button id="reset" disabled>重置</button>
+    </div>
+    <div class="done" id="done">时间到</div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display')
+    const hint = document.getElementById('hint')
+    const secondsInput = document.getElementById('seconds')
+    const preset = document.getElementById('preset')
+    const startBtn = document.getElementById('start')
+    const pauseBtn = document.getElementById('pause')
+    const resetBtn = document.getElementById('reset')
+    const doneEl = document.getElementById('done')
+
+    let timerId = null
+    let endAt = 0
+    let remainingMs = 0
+    let paused = false
+
+    function fmt(ms) {
+      const total = Math.max(0, Math.floor(ms / 1000))
+      const h = Math.floor(total / 3600)
+      const m = Math.floor((total % 3600) / 60)
+      const s = total % 60
+      const hh = h < 10 ? '0' + h : '' + h
+      const mm = m < 10 ? '0' + m : '' + m
+      const ss = s < 10 ? '0' + s : '' + s
+      return hh + ':' + mm + ':' + ss
+    }
+
+    function tick() {
+      const now = Date.now()
+      const left = endAt - now
+      remainingMs = left
+      display.textContent = fmt(left)
+      if (left <= 0) {
+        stopTimer()
+        display.textContent = '00:00:00'
+        doneEl.style.visibility = 'visible'
+        doneEl.classList.add('blink')
+        hint.textContent = '再次输入秒数并开始'
+        beep()
+      }
+    }
+
+    function startTimer() {
+      if (paused && remainingMs > 0) {
+        endAt = Date.now() + remainingMs
+        paused = false
+      } else {
+        const sec = parseInt(secondsInput.value, 10)
+        if (!Number.isFinite(sec) || sec < 1) return
+        remainingMs = sec * 1000
+        endAt = Date.now() + remainingMs
+        doneEl.style.visibility = 'hidden'
+        doneEl.classList.remove('blink')
+      }
+      clearInterval(timerId)
+      timerId = setInterval(tick, 100)
+      tick()
+      secondsInput.disabled = true
+      preset.disabled = true
+      startBtn.disabled = true
+      pauseBtn.disabled = false
+      resetBtn.disabled = false
+      hint.textContent = '计时中'
+    }
+
+    function pauseTimer() {
+      if (!timerId) return
+      clearInterval(timerId)
+      timerId = null
+      paused = true
+      startBtn.disabled = false
+      pauseBtn.disabled = true
+      hint.textContent = '已暂停'
+    }
+
+    function stopTimer() {
+      clearInterval(timerId)
+      timerId = null
+      paused = false
+      remainingMs = 0
+      secondsInput.disabled = false
+      preset.disabled = false
+      startBtn.disabled = false
+      pauseBtn.disabled = true
+      resetBtn.disabled = true
+    }
+
+    function resetTimer() {
+      stopTimer()
+      display.textContent = '00:00:00'
+      doneEl.style.visibility = 'hidden'
+      doneEl.classList.remove('blink')
+      hint.textContent = '输入秒数，点击开始'
+    }
+
+    function beep() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)()
+        const o = ctx.createOscillator()
+        const g = ctx.createGain()
+        o.type = 'sine'
+        o.frequency.value = 880
+        g.gain.value = 0.05
+        o.connect(g)
+        g.connect(ctx.destination)
+        o.start()
+        setTimeout(() => { o.stop(); ctx.close() }, 800)
+      } catch {}
+    }
+
+    startBtn.addEventListener('click', startTimer)
+    pauseBtn.addEventListener('click', pauseTimer)
+    resetBtn.addEventListener('click', resetTimer)
+    preset.addEventListener('change', e => { secondsInput.value = e.target.value })
+  </script>
+</body>
+</html>

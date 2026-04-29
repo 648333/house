@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+  <rect width="1600" height="1100" fill="#242b34"/>
+  <g stroke="#39424d" stroke-width="2">
+    <path d="M0 120 H1600M0 240 H1600M0 360 H1600M0 480 H1600M0 600 H1600M0 720 H1600M0 840 H1600M0 960 H1600"/>
+    <path d="M120 0 V1100M240 0 V1100M360 0 V1100M480 0 V1100M600 0 V1100M720 0 V1100M840 0 V1100M960 0 V1100M1080 0 V1100M1200 0 V1100M1320 0 V1100M1440 0 V1100"/>
+  </g>
+
+  <g stroke="#f3f5f7" stroke-width="14" fill="none" stroke-linecap="square">
+    <rect x="130" y="110" width="1340" height="860"/>
+    <path d="M850 110 V970"/>
+    <path d="M130 620 H1470"/>
+    <path d="M560 110 V450"/>
+    <path d="M1080 110 V450"/>
+    <path d="M1080 620 V970"/>
+    <path d="M350 620 V970"/>
+  </g>
+
+  <g stroke="#f3f5f7" stroke-width="4" fill="none">
+    <path d="M850 330 A90 90 0 0 1 940 420"/>
+    <path d="M1080 330 A90 90 0 0 1 1170 420"/>
+    <path d="M700 620 A90 90 0 0 0 790 530"/>
+    <path d="M1080 760 A90 90 0 0 1 1170 850"/>
+    <path d="M350 760 A90 90 0 0 0 440 670"/>
+  </g>
+
+  <g fill="none" stroke="#f3f5f7" stroke-width="6">
+    <rect x="210" y="210" width="220" height="120"/>
+    <rect x="470" y="210" width="70" height="180"/>
+    <rect x="630" y="170" width="150" height="220"/>
+    <rect x="910" y="180" width="120" height="200"/>
+    <rect x="1160" y="170" width="210" height="230"/>
+    <rect x="220" y="700" width="90" height="150"/>
+    <circle cx="265" cy="775" r="25"/>
+    <rect x="455" y="685" width="200" height="120"/>
+    <rect x="455" y="835" width="220" height="70"/>
+    <rect x="1175" y="690" width="230" height="110"/>
+    <rect x="1315" y="815" width="60" height="120"/>
+  </g>
+
+  <g stroke="#f3f5f7" stroke-width="4" fill="none">
+    <path d="M1175 170 L1265 250 L1355 170"/>
+    <path d="M1355 400 L1265 320 L1175 400"/>
+    <path d="M640 170 L705 235 L770 170"/>
+    <path d="M770 390 L705 325 L640 390"/>
+  </g>
+
+  <g fill="#f3f5f7" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif" text-anchor="middle">
+    <text x="345" y="290" font-size="48">客厅</text>
+    <text x="705" y="305" font-size="42">餐厅</text>
+    <text x="970" y="300" font-size="40">厨房</text>
+    <text x="1265" y="305" font-size="48">卧室</text>
+    <text x="265" y="840" font-size="38">卫浴</text>
+    <text x="565" y="770" font-size="42">次卧</text>
+    <text x="1290" y="785" font-size="42">阳台</text>
+  </g>
+
+  <g fill="#c7cdd4" font-size="26" font-family="'Microsoft YaHei', 'PingFang SC', sans-serif">
+    <text x="580" y="938">LTM1818</text>
+    <text x="1210" y="938">LTM2424</text>
+    <text x="872" y="575" transform="rotate(-90 872 575)">Y0821</text>
+    <text x="1105" y="525" transform="rotate(-90 1105 525)">Y0621</text>
+  </g>
+</svg>
